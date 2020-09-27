@@ -1,0 +1,18 @@
+.column-header .label {
+    -fx-alignment: center-left;
+}
+
+.number-table-column {
+    -fx-font-family: Monospaced;
+    -fx-alignment: CENTER-RIGHT;
+}
+
+.sql-table-column {
+    -fx-font-family: Monospaced;
+    -fx-alignment: CENTER-LEFT;
+}
+
+.sql-statement {
+    -fx-font-family: Monospaced;
+
+}

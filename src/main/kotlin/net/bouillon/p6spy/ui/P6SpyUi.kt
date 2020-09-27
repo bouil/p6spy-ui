@@ -1,8 +1,8 @@
 package net.bouillon.p6spy.ui
 
-import org.springframework.boot.SpringApplication
+import javafx.application.Application
 
 fun main(args: Array<String>) {
-    SpringApplication.run(P6SpyUiConfiguration::class.java, *args)
+    Application.launch(P6SpyApplication::class.java, *args)
 }
 
