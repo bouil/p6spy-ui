@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <VBox prefHeight="800" prefWidth="1000" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.bouillon.p6spy.ui.P6SpyController">
     <children>
-        <HBox prefHeight="100.0" spacing="5.0" VBox.vgrow="NEVER">
+        <HBox spacing="5.0" VBox.vgrow="NEVER">
             <children>
                 <TextField fx:id="host" prefWidth="200.0" promptText="Hostname" text="localhost"/>
                 <TextField fx:id="port" promptText="Port" text="4564"/>
@@ -22,29 +21,29 @@
                 <Tab text="Prepared Statements" closable="false">
                     <content>
                         <VBox>
-                            <TableView fx:id="tableViewPrepared" prefHeight="600" VBox.vgrow="ALWAYS">
+                            <TableView fx:id="tableViewPrepared" VBox.vgrow="ALWAYS">
                                 <columns>
-                                    <TableColumn styleClass="number-table-column" editable="false" text="Count">
+                                    <TableColumn editable="false" styleClass="number-table-column" text="Count">
                                         <cellValueFactory>
                                             <PropertyValueFactory property="count"/>
                                         </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn styleClass="number-table-column" editable="false" text="Duration">
+                                    <TableColumn editable="false" styleClass="number-table-column" text="Duration">
                                         <cellValueFactory>
                                             <PropertyValueFactory property="time"/>
                                         </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn styleClass="number-table-column" editable="false" text="Average">
+                                    <TableColumn editable="false" styleClass="number-table-column" text="Average">
                                         <cellValueFactory>
                                             <PropertyValueFactory property="average"/>
                                         </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn styleClass="number-table-column" editable="false" text="Max">
+                                    <TableColumn editable="false" styleClass="number-table-column" text="Max">
                                         <cellValueFactory>
                                             <PropertyValueFactory property="max"/>
                                         </cellValueFactory>
                                     </TableColumn>
-                                    <TableColumn styleClass="sql-table-column" editable="false" prefWidth="800"
+                                    <TableColumn editable="false" prefWidth="800" styleClass="sql-table-column"
                                                  text="SQL">
                                         <cellValueFactory>
                                             <PropertyValueFactory property="sql"/>
@@ -53,9 +52,8 @@
                                 </columns>
 
                             </TableView>
-                            <TextArea styleClass="sql-statement" fx:id="sqlPrepared" editable="false" minHeight="150.0"
-                                      prefHeight="200.0"
-                                      prefWidth="200.0">
+                            <TextArea fx:id="sqlPrepared" editable="false" minHeight="100.0" prefHeight="150.0"
+                                      styleClass="sql-statement" wrapText="true" VBox.vgrow="NEVER">
                             </TextArea>
                         </VBox>
                     </content>
@@ -64,20 +62,20 @@
                     <content>
                         <VBox>
                             <children>
-                                <TableView fx:id="tableViewEffective" prefHeight="600" VBox.vgrow="ALWAYS">
+                                <TableView fx:id="tableViewEffective" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn styleClass="number-table-column" editable="false" text="Timestamp"
-                                                     prefWidth="100">
+                                        <TableColumn editable="false" prefWidth="100" styleClass="number-table-column"
+                                                     text="Timestamp">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="now"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn styleClass="number-table-column" editable="false" text="Duration">
+                                        <TableColumn editable="false" styleClass="number-table-column" text="Duration">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="elapsed"/>
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn styleClass="sql-table-column" editable="false" prefWidth="800"
+                                        <TableColumn editable="false" prefWidth="800" styleClass="sql-table-column"
                                                      text="SQL">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="sql"/>
@@ -85,9 +83,8 @@
                                         </TableColumn>
                                     </columns>
                                 </TableView>
-                                <TextArea styleClass="sql-statement" fx:id="sqlEffective" editable="false"
-                                          minHeight="150.0" prefHeight="200.0"
-                                          prefWidth="200.0">
+                                <TextArea fx:id="sqlEffective" editable="false" minHeight="100.0" prefHeight="150.0"
+                                          styleClass="sql-statement" wrapText="true" VBox.vgrow="NEVER">
                                 </TextArea>
                             </children>
                         </VBox>
@@ -95,33 +92,34 @@
                 </Tab>
             </tabs>
         </TabPane>
-        <GridPane hgap="5.0" vgap="5.0" VBox.vgrow="NEVER">
+        <GridPane hgap="5.0" VBox.vgrow="NEVER">
             <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="200.0" prefWidth="200.0"/>
                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
+                <RowConstraints vgrow="NEVER"/>
             </rowConstraints>
             <children>
-                <Label text="Global Count"/>
-                <Label text="Global Count Distinct Prepared" GridPane.rowIndex="1"/>
-                <Label text="Global Average" GridPane.rowIndex="2"/>
-                <Label text="Global Duration" GridPane.rowIndex="3"/>
-                <Label text="Global Max" GridPane.rowIndex="4"/>
-                <Label fx:id="globalCount" text="-" GridPane.columnIndex="1"/>
-                <Label fx:id="globalCountDistinct" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Label fx:id="globalAverage" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                <Label fx:id="globalDuration" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                <Label fx:id="globalMax" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label text="Global Count" GridPane.vgrow="NEVER"/>
+                <Label text="Global Count Distinct Prepared" GridPane.rowIndex="1" GridPane.vgrow="NEVER"/>
+                <Label text="Global Average" GridPane.rowIndex="2" GridPane.vgrow="NEVER"/>
+                <Label text="Global Duration" GridPane.rowIndex="3" GridPane.vgrow="NEVER"/>
+                <Label text="Global Max" GridPane.rowIndex="4" GridPane.vgrow="NEVER"/>
+                <Label fx:id="globalCount" text="-" GridPane.columnIndex="1" GridPane.vgrow="NEVER"/>
+                <Label fx:id="globalCountDistinct" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       GridPane.vgrow="NEVER"/>
+                <Label fx:id="globalAverage" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                       GridPane.vgrow="NEVER"/>
+                <Label fx:id="globalDuration" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                       GridPane.vgrow="NEVER"/>
+                <Label fx:id="globalMax" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                       GridPane.vgrow="NEVER"/>
             </children>
-            <VBox.margin>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-            </VBox.margin>
         </GridPane>
     </children>
 </VBox>
