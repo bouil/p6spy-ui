@@ -27,11 +27,6 @@ open class P6SpySocketClient @Autowired constructor() {
         val log = LoggerFactory.getLogger(P6SpySocketClient::class.java)
     }
 
-//    @PostConstruct
-//    fun afterReady() {
-//        connect("localhost", 4564)
-//    }
-
     private var spySubscription: Disposable? = null
 
     private var client: AsynchronousSocketChannel? = null
