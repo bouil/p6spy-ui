@@ -1,11 +1,8 @@
 package net.bouillon.p6spy.ui
 
-import io.reactivex.rxjava3.annotations.NonNull
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.disposables.Disposable
 import javafx.application.Platform
-import javafx.beans.value.ChangeListener
-import javafx.beans.value.ObservableValue
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.control.*
@@ -70,14 +67,14 @@ class P6SpyController {
     @FXML
     fun initialize() {
         initButtons()
-        tableViewPrepared.selectionModel.selectedItemProperty().addListener { observable, oldValue, newValue ->
+        tableViewPrepared.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
             if (newValue != null) {
                 sqlPrepared.text = newValue.sql
             } else {
                 sqlPrepared.text = ""
             }
         }
-        tableViewEffective.selectionModel.selectedItemProperty().addListener { observable, oldValue, newValue ->
+        tableViewEffective.selectionModel.selectedItemProperty().addListener { _, _, newValue ->
             if (newValue != null) {
                 sqlEffective.text = newValue.sql
             } else {
@@ -88,7 +85,7 @@ class P6SpyController {
     }
 
     fun initButtons() {
-        connectButton.isDisable = p6SpySocketClient.connected;
+        connectButton.isDisable = p6SpySocketClient.connected
         disconnectButton.isDisable = !p6SpySocketClient.connected
     }
 
@@ -125,7 +122,7 @@ class P6SpyController {
 
     private fun getSpyObservable(): Flowable<SqlLog>? {
         try {
-            connectButton.isDisable = true;
+            connectButton.isDisable = true
             disconnectButton.isDisable = true
             return if (!host.text.isNullOrEmpty() && !port.text.isNullOrEmpty()) {
                 val host = host.text
@@ -163,7 +160,8 @@ class P6SpyController {
     }
 
     fun recalculateStats() {
-
+        val data : MutableList<SqlLog> = mutableListOf()
+        data.addAll(this.data)
         val dataGroup = data.groupBy { it -> it.prepared }
         val sqlLogDataModels = dataGroup.map { (sql, v) ->
             val count = v.count()

@@ -18,7 +18,6 @@ import java.nio.ByteBuffer
 import java.nio.channels.AsynchronousSocketChannel
 import java.nio.channels.CompletionHandler
 import java.util.*
-import javax.annotation.PostConstruct
 
 @Service
 open class P6SpySocketClient @Autowired constructor() {
@@ -110,6 +109,7 @@ open class P6SpySocketClient @Autowired constructor() {
         spySubscription = null
         log.info("Disconnected")
 
+        @Suppress("DEPRECATION")
         readingThread?.stop()
     }
 
